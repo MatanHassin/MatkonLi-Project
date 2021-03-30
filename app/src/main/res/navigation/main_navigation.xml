@@ -41,5 +41,31 @@
         android:id="@+id/profile_Fragment"
         android:name="com.matanhassin.matkonli.Profile_Fragment"
         android:label="fragment_profile_"
-        tools:layout="@layout/fragment_profile_" />
+        tools:layout="@layout/fragment_profile_" >
+        <action
+            android:id="@+id/action_profile_Fragment_to_edit_Profile_Fragment"
+            app:destination="@id/edit_Profile_Fragment" />
+        <action
+            android:id="@+id/action_profile_Fragment_to_my_Recipes_List_Fragment"
+            app:destination="@id/my_Recipes_List_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_Profile_Fragment"
+        android:name="com.matanhassin.matkonli.Edit_Profile_Fragment"
+        android:label="fragment_edit__profile_"
+        tools:layout="@layout/fragment_edit__profile_" />
+    <fragment
+        android:id="@+id/my_Recipes_List_Fragment"
+        android:name="com.matanhassin.matkonli.My_Recipes_List_Fragment"
+        android:label="fragment_my__recipes__list_"
+        tools:layout="@layout/fragment_my__recipes__list_" >
+        <action
+            android:id="@+id/action_my_Recipes_List_Fragment_to_recipe_Page_Fragment"
+            app:destination="@id/recipe_Page_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/new_Recipe_Fragment"
+        android:name="com.matanhassin.matkonli.New_Recipe_Fragment"
+        android:label="fragment_new__recipe_"
+        tools:layout="@layout/fragment_new__recipe_" />
 </navigation>
