@@ -18,14 +18,6 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-        Button  saladCategoryBtn = view.findViewById(R.id.button_category_salads);
-
-        saladCategoryBtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Navigation.findNavController(v).navigate(R.id.action_homeFragment_to_listOfRecipesFragment);
-            }
-        });
         return view;
     }
 }
