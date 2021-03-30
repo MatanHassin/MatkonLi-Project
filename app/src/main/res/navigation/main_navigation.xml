@@ -3,20 +3,43 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_navigation"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/home_Fragment">
 
     <fragment
-        android:id="@+id/homeFragment"
+        android:id="@+id/home_Fragment"
         android:name="com.matanhassin.matkonli.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" >
         <action
             android:id="@+id/action_homeFragment_to_listOfRecipesFragment"
-            app:destination="@id/listOfRecipesFragment" />
+            app:destination="@id/list_Of_Recipes_Fragment" />
     </fragment>
     <fragment
-        android:id="@+id/listOfRecipesFragment"
+        android:id="@+id/list_Of_Recipes_Fragment"
         android:name="com.matanhassin.matkonli.ListOfRecipesFragment"
         android:label="fragment_list_of_recipes"
-        tools:layout="@layout/fragment_list_of_recipes" />
+        tools:layout="@layout/fragment_list_of_recipes" >
+        <action
+            android:id="@+id/action_list_Of_Recipes_Fragment_to_recipe_Page_Fragment2"
+            app:destination="@id/recipe_Page_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/recipe_Page_Fragment"
+        android:name="com.matanhassin.matkonli.Recipe_Page_Fragment"
+        android:label="fragment_recipe__page_"
+        tools:layout="@layout/fragment_recipe__page_" >
+        <action
+            android:id="@+id/action_recipe_Page_Fragment_to_edit_Recipe_Fragment"
+            app:destination="@id/edit_Recipe_Fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/edit_Recipe_Fragment"
+        android:name="com.matanhassin.matkonli.Edit_Recipe_Fragment"
+        android:label="fragment_edit__recipe_"
+        tools:layout="@layout/fragment_edit__recipe_" />
+    <fragment
+        android:id="@+id/profile_Fragment"
+        android:name="com.matanhassin.matkonli.Profile_Fragment"
+        android:label="fragment_profile_"
+        tools:layout="@layout/fragment_profile_" />
 </navigation>
