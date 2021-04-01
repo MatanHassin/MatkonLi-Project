@@ -120,7 +120,7 @@
                 android:src="@drawable/cheese" />
 
             <ImageButton
-                android:id="@+id/pint"
+                android:id="@+id/beer"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
