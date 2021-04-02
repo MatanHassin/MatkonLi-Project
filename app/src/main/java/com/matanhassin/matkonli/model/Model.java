@@ -10,6 +10,8 @@ public class Model {
     public interface Listener<T> {
         void onComplete(T data);
     }
+
+
     public void addRecipe(final Recipe recipe, Listener<Boolean> listener){
 
     }
