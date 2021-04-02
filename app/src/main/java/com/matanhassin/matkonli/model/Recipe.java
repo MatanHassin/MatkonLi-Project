@@ -1,6 +1,13 @@
 package com.matanhassin.matkonli.model;
 
+import androidx.annotation.NonNull;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Recipe {
+    @PrimaryKey
+    @NonNull
     private String recipeId;
     private String recipeName;
     private String categoryId;
@@ -24,7 +31,7 @@ public class Recipe {
         username = "";
         lastUpdated = 0;
     }
-
+    @NonNull
     public String getRecipeId() {
         return recipeId;
     }
