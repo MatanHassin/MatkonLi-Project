@@ -23,7 +23,7 @@ public class activity_start_screen extends AppCompatActivity {
                 {
                     e.printStackTrace();
                 } finally {
-                    toHomePage();
+                    toLoginPage();
                 }
             }
         }.start();
@@ -36,8 +36,8 @@ public class activity_start_screen extends AppCompatActivity {
         finish();
     }
 
-    private void toHomePage() {
-        Intent intent = new Intent(this, HomeFragment.class);
+    private void toLoginPage() {
+        Intent intent = new Intent(this, login_page.class);
         startActivity(intent);
     }
 }

@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.MatkonLi">
-        <activity android:name=".activities.activity_login_Page"></activity>
+        <activity android:name=".activities.register_page"></activity>
+        <activity android:name=".activities.login_page" />
         <activity android:name=".activities.MainActivity" />
         <activity android:name=".activities.activity_start_screen">
             <intent-filter>
