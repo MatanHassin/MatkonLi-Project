@@ -33,6 +33,7 @@ public class ModelFirebase {
         if(firebaseAuth.getCurrentUser() != null){
             firebaseAuth.signOut();
         }
+
         if(username!=null
         && !username.equals("") && password !=null && !password.equals("")
         && email != null && !email.equals("") && imageUri !=null){
@@ -51,6 +52,7 @@ public class ModelFirebase {
                 }
             });
         }
+
         else{
             Toast.makeText(MyApplication.context,"You must fill in all of the fields and profile image",Toast.LENGTH_SHORT).show();
             listener.onFail();
