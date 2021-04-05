@@ -1,5 +1,6 @@
 package com.matanhassin.matkonli.activities;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
@@ -9,16 +10,20 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.Toast;
+
+import com.google.android.material.textfield.TextInputLayout;
 import com.matanhassin.matkonli.R;
 import com.matanhassin.matkonli.model.ModelFirebase;
 import com.matanhassin.matkonli.model.Utils;
 
 public class register_page extends AppCompatActivity {
 
-    EditText userName;
-    EditText email;
-    EditText password;
-    ImageButton photoUpload;
+    TextInputLayout userName;
+    TextInputLayout email;
+    TextInputLayout password;
+    ImageView photoUpload;
     Button loginBtn;
     Button registerBtn;
     Uri profileImageUri = null;
@@ -42,7 +47,7 @@ public class register_page extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModelFirebase.registerUser(userName.getText().toString(),password.getText().toString(),email.getText().toString(),profileImageUri,new ModelFirebase.Listener<Boolean>(){
+                ModelFirebase.registerUser(userName.getHint().toString(),password.getHint().toString(),email.getHint().toString(),profileImageUri,new ModelFirebase.Listener<Boolean>(){
                     @Override
                     public void onComplete() {
                         register_page.this.finish();
@@ -62,7 +67,19 @@ public class register_page extends AppCompatActivity {
                 toLoginPage();
             }
         });
+    }
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data)
+    {
+        super.onActivityResult(requestCode, resultCode, data);
 
+        if(data != null && resultCode == RESULT_OK){
+            profileImageUri = data.getData();
+            photoUpload.setImageURI(profileImageUri);
+        }
+        else {
+            Toast.makeText(this, "No image was selected", Toast.LENGTH_SHORT).show();
+        }
     }
 
     private void toLoginPage() {
