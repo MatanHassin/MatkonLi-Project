@@ -15,13 +15,12 @@ public class MainActivity extends AppCompatActivity {
     NavController navController;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         navController = Navigation.findNavController(this, R.id.mainactivity_navhost);
         BottomNavigationView bottomNav = findViewById(R.id.home_bottom_nav);
         NavigationUI.setupWithNavController(bottomNav,navController);
-
+        NavigationUI.setupActionBarWithNavController(this, navController);
     }
 
     @Override
