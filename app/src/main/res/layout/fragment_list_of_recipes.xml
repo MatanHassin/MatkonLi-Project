@@ -6,4 +6,8 @@
     tools:context=".fragments.ListOfRecipesFragment">
 
 
-    </LinearLayout>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/list_of_recipes_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+</LinearLayout>
