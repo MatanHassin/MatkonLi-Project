@@ -1,4 +1,4 @@
-package com.matanhassin.matkonli;
+package com.matanhassin.matkonli.fragments;
 
 import android.os.Bundle;
 
@@ -8,6 +8,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.matanhassin.matkonli.ListOfRecipesFragmentArgs;
+import com.matanhassin.matkonli.R;
 
 public class ListOfRecipesFragment extends Fragment {
 

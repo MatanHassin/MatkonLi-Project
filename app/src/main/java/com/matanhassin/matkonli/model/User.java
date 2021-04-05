@@ -3,7 +3,6 @@ package com.matanhassin.matkonli.model;
 public class User {
 
     private static User theUser = null;
-
     private String username;
     private String userEmail;
     private String userId;
@@ -81,6 +80,4 @@ public class User {
     public void setUserprofileImageUrl(String userprofileImageUrl) {
         this.userprofileImageUrl = userprofileImageUrl;
     }
-
-
 }

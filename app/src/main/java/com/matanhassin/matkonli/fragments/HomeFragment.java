@@ -1,4 +1,4 @@
-package com.matanhassin.matkonli;
+package com.matanhassin.matkonli.fragments;
 import android.os.Bundle;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -7,6 +7,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+
+import com.matanhassin.matkonli.HomeFragmentDirections;
+import com.matanhassin.matkonli.R;
 
 
 public class HomeFragment extends Fragment {
