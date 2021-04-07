@@ -3,12 +3,12 @@ package com.matanhassin.matkonli.model;
 public class User {
 
     private static User theUser = null;
-    private String username;
-    private String userEmail;
-    private String userId;
-    private String userPassword;
-    private String userAddress;
-    private String userprofileImageUrl;
+    public String username;
+    public String userEmail;
+    public String userId;
+    public String userPassword;
+    public String userAddress;
+    public String userprofileImageUrl;
 
     private User() {
         username = null;

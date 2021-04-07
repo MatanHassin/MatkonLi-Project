@@ -12,6 +12,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -23,12 +24,14 @@ import java.util.Map;
 
 public class ModelFirebase {
 
+    final static String RECIPE = "recipe";
+
     public interface Listener<T>{
         void onComplete();
         void onFail();
     }
 
-    public static void loginUser(final String email,final String password, final Listener<Boolean> listener){
+    public static void loginUser(final String email, String password, final Listener<Boolean> listener){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if (email != null && !email.equals("") && password != null && !password.equals(""))
@@ -69,7 +72,7 @@ public class ModelFirebase {
             firebaseAuth.signOut();
         }
 
-        if(username!=null
+        if(firebaseAuth.getCurrentUser()== null && username!=null
         && !username.equals("") && password !=null && !password.equals("")
         && email != null && !email.equals("") && imageUri !=null){
             firebaseAuth.createUserWithEmailAndPassword(email,password).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
@@ -163,28 +166,50 @@ public class ModelFirebase {
     {
         FirebaseFirestore db = FirebaseFirestore.getInstance();;
         final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-        db.collection("userProfileData").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+        db.collection("userData").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task)
             {
-                String username = User.getInstance().getUsername();
-                String userprofileImageUrl = User.getInstance().getUserprofileImageUrl();
-                String userPassword = User.getInstance().getUserPassword();
-                String userAddress = User.getInstance().getUserAddress();
-                String userEmail = User.getInstance().getUserEmail();
-                String userId = User.getInstance().getUserId();
+//                String username = User.getInstance().getUsername();
+//                String userprofileImageUrl = User.getInstance().getUserprofileImageUrl();
+//                String userPassword = User.getInstance().getUserPassword();
+//                String userAddress = User.getInstance().getUserAddress();
+//                String userEmail = User.getInstance().getUserEmail();
+//                String userId = User.getInstance().getUserId();
 
                 if (task.isSuccessful()){
-                    username = (String) task.getResult().get("username");
-                    userprofileImageUrl = (String) task.getResult().get("profileImageUrl");
-                    userPassword = (String) task.getResult().get("password");
-                    userAddress = (String) task.getResult().get("address");
-                    userEmail = email;
-                    userId = firebaseAuth.getUid();
+                    User.getInstance().username = (String) task.getResult().get("username");
+                    User.getInstance().userprofileImageUrl = (String) task.getResult().get("profileImageUrl");
+                    User.getInstance().userPassword = (String) task.getResult().get("password");
+                    User.getInstance().userAddress = (String) task.getResult().get("address");
+                    User.getInstance().userEmail = email;
+                    User.getInstance().userId = firebaseAuth.getUid();
                 }
             }
         });
     }
 
-    public void addRecipe(Recipe recipe, Model.Listener<Boolean> listener) { }
+    public static void addRecipe(Recipe recipe, final Model.Listener<Boolean> listener) {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();
+        db.collection(RECIPE).document(recipe.getRecipeId()).set(toMap(recipe)).addOnCompleteListener(new OnCompleteListener<Void>() {
+            @Override
+            public void onComplete(@NonNull Task<Void> task) {
+                if (listener != null) {
+                    listener.onComplete(task.isSuccessful()); }
+            }});
+    }
+
+    public static Map<String, Object> toMap(Recipe recipe){
+        HashMap<String, Object> map = new HashMap<>();
+        map.put("recipeId", recipe.getRecipeId());
+        map.put("recipeName", recipe.getRecipeName());
+        map.put("categoryId", recipe.getCategoryId());
+        map.put("recipeIngredients", recipe.getRecipeIngredients());
+        map.put("recipeContent", recipe.getRecipeContent());
+        map.put("recipeImgUrl", recipe.getRecipeImageUrl());
+        map.put("userId", User.getInstance().getUserId());
+        map.put("username", User.getInstance().getUsername());
+        map.put("lastUpdated", FieldValue.serverTimestamp());
+        return map;
+    }
 }

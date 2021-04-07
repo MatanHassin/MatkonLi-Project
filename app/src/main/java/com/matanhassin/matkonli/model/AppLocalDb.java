@@ -7,7 +7,7 @@ import androidx.room.RoomDatabase;
 
 import com.matanhassin.matkonli.MyApplication;
 
-@Database(entities = {Recipe.class},version = 2)
+@Database(entities = {Recipe.class}, version = 3)
 abstract class AppLocalDbRepository extends RoomDatabase {
     public abstract RecipeDao RecipeDao();
 }

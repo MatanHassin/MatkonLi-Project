@@ -12,7 +12,7 @@ import com.matanhassin.matkonli.R;
 
 public class HomeFragment extends Fragment {
 
-    ImageButton spaguetti;
+    ImageButton spaghetti;
     ImageButton steak;
     ImageButton fish;
     ImageButton cupcake;
@@ -28,7 +28,7 @@ public class HomeFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        spaguetti = view.findViewById(R.id.spaguetti);
+        spaghetti = view.findViewById(R.id.spaghetti);
         steak= view.findViewById(R.id.steak);
         fish= view.findViewById(R.id.fish);
         cupcake= view.findViewById(R.id.cupcake);
@@ -38,10 +38,10 @@ public class HomeFragment extends Fragment {
         cheese= view.findViewById(R.id.cheese);
         beer= view.findViewById(R.id.beer);
 
-        spaguetti.setOnClickListener(new View.OnClickListener() {
+        spaghetti.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                HomeFragmentDirections.ActionHomeFragmentToListOfRecipesFragment action = HomeFragmentDirections.actionHomeFragmentToListOfRecipesFragment("spaguetti");
+                HomeFragmentDirections.ActionHomeFragmentToListOfRecipesFragment action = HomeFragmentDirections.actionHomeFragmentToListOfRecipesFragment("spaghetti");
                 Navigation.findNavController(view).navigate(action);
             }
         });
