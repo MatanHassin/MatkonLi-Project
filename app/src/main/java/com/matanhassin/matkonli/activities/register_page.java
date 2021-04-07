@@ -2,17 +2,14 @@ package com.matanhassin.matkonli.activities;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
-
 import com.google.android.material.textfield.TextInputLayout;
 import com.matanhassin.matkonli.R;
 import com.matanhassin.matkonli.model.ModelFirebase;
@@ -20,9 +17,9 @@ import com.matanhassin.matkonli.model.Utils;
 
 public class register_page extends AppCompatActivity {
 
-    TextInputLayout userName;
-    TextInputLayout email;
-    TextInputLayout password;
+    EditText userName;
+    EditText email;
+    EditText password;
     ImageView photoUpload;
     Button loginBtn;
     Button registerBtn;
@@ -33,9 +30,9 @@ public class register_page extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register_page);
 
-        userName = findViewById(R.id.register_Page_Username_textInputLayout);
-        email = findViewById(R.id.register_Page_Email_textInputLayout);
-        password = findViewById(R.id.register_Page_Password_textInputLayout);
+        userName = findViewById(R.id.register_Page_Name_EditText);
+        email = findViewById(R.id.register_Page_Email_EditText);
+        password = findViewById(R.id.register_Page_Password_EditText);
         photoUpload = findViewById(R.id.register_Page_Camera_imageButton);
         photoUpload.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,7 +44,7 @@ public class register_page extends AppCompatActivity {
         registerBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ModelFirebase.registerUser(userName.getHint().toString(),password.getHint().toString(),email.getHint().toString(),profileImageUri,new ModelFirebase.Listener<Boolean>(){
+                ModelFirebase.registerUser(userName.getText().toString(),password.getText().toString(),email.getText().toString(),profileImageUri,new ModelFirebase.Listener<Boolean>(){
                     @Override
                     public void onComplete() {
                         register_page.this.finish();

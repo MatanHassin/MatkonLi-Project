@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
@@ -27,7 +28,41 @@ public class ModelFirebase {
         void onFail();
     }
 
-    public static void registerUser(final String username, String password, final String email, final Uri imageUri, final Listener<Boolean> listener){
+    public static void loginUser(final String email,final String password, final Listener<Boolean> listener){
+        FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+
+        if (email != null && !email.equals("") && password != null && !password.equals(""))
+        {
+            if (firebaseAuth.getCurrentUser() != null)
+            {
+                firebaseAuth.signOut();
+            }
+
+            firebaseAuth.signInWithEmailAndPassword(email, password).addOnSuccessListener(new OnSuccessListener<AuthResult>()
+            {
+                @Override
+                public void onSuccess(AuthResult authResult)
+                {
+                    Toast.makeText(MyApplication.context, "Hello :)", Toast.LENGTH_SHORT).show();
+                    setUserData(email);
+                    listener.onComplete();
+                }
+
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    Toast.makeText(MyApplication.context, "Login failed: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    listener.onFail();
+                }
+            });
+        }
+        else {
+            Toast.makeText(MyApplication.context, "You must fill in all of the fields", Toast.LENGTH_SHORT).show();
+        }
+    }
+
+
+    public static void registerUser(final String username, final String password, final String email, final Uri imageUri, final Listener<Boolean> listener){
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
 
         if(firebaseAuth.getCurrentUser() != null){
@@ -122,6 +157,33 @@ public class ModelFirebase {
             Toast.makeText(MyApplication.context, "Register page: " + e.getMessage(), Toast.LENGTH_SHORT).show();
             return null;
         }
+    }
+
+    public static void setUserData(final String email)
+    {
+        FirebaseFirestore db = FirebaseFirestore.getInstance();;
+        final FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+        db.collection("userProfileData").document(email).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task)
+            {
+                String username = User.getInstance().getUsername();
+                String userprofileImageUrl = User.getInstance().getUserprofileImageUrl();
+                String userPassword = User.getInstance().getUserPassword();
+                String userAddress = User.getInstance().getUserAddress();
+                String userEmail = User.getInstance().getUserEmail();
+                String userId = User.getInstance().getUserId();
+
+                if (task.isSuccessful()){
+                    username = (String) task.getResult().get("username");
+                    userprofileImageUrl = (String) task.getResult().get("profileImageUrl");
+                    userPassword = (String) task.getResult().get("password");
+                    userAddress = (String) task.getResult().get("address");
+                    userEmail = email;
+                    userId = firebaseAuth.getUid();
+                }
+            }
+        });
     }
 
     public void addRecipe(Recipe recipe, Model.Listener<Boolean> listener) { }
