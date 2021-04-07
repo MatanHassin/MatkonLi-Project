@@ -26,6 +26,14 @@ public class Model {
     }.execute();
     }
 
+    public void updateUserProfile(String username, String profileImgUrl, Listener<Boolean> listener) {
+        ModelFirebase.updateUserProfile(username, profileImgUrl, listener);
+    }
+
+    public void setUserAppData(String email) {
+        ModelFirebase.setUserData(email);
+    }
+
     public Recipe getRecipeById (String recipeId){
         Recipe recipe = null;
         return recipe;
