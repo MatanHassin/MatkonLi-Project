@@ -8,15 +8,15 @@ import androidx.room.PrimaryKey;
 public class Recipe {
     @PrimaryKey
     @NonNull
-    private String recipeId;
-    private String recipeName;
-    private String categoryId;
-    private String recipeIngredients;
-    private String recipeContent;
-    private String recipeImageUrl;
-    private String userId;
-    private String username;
-    private long lastUpdated;
+    public String recipeId;
+    public String recipeName;
+    public String categoryId;
+    public String recipeIngredients;
+    public String recipeContent;
+    public String recipeImageUrl;
+    public String userId;
+    public String username;
+    public long lastUpdated;
 
     public Recipe(){
         recipeId = "";
