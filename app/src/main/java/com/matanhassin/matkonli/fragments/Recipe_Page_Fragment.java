@@ -96,6 +96,7 @@ public class Recipe_Page_Fragment extends Fragment {
         }
         return view;
     }
+
     private void toEditRecipePage(Recipe recipe) {
 
         NavController navController = Navigation.findNavController(getActivity(),R.id.mainactivity_navhost);
