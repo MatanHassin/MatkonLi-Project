@@ -4,19 +4,27 @@ import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.LiveData;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import com.matanhassin.matkonli.R;
+import com.matanhassin.matkonli.model.Recipe;
+
+import java.util.LinkedList;
+import java.util.List;
 
 
 public class ListOfRecipesFragment extends Fragment {
 
     String category;
     RecyclerView list;
-
+    List<Recipe> data = new LinkedList<>();
+    RecipeListAdapter adapter;
+    Recipe_List_ViewModel viewModel;
+    LiveData<List<Recipe>> liveData;
     public ListOfRecipesFragment(){}
 
     @Override
