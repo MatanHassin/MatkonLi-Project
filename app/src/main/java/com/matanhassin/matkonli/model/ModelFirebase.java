@@ -285,8 +285,10 @@ public class ModelFirebase {
         newRecipe.userId = (String) json.get("userId");
         newRecipe.username = (String) json.get("username");
         Timestamp ts = (Timestamp)json.get("lastUpdated");
+
         if (ts != null)
             newRecipe.lastUpdated = ts.getSeconds();
+
         return newRecipe;
     }
 
@@ -300,8 +302,8 @@ public class ModelFirebase {
         if (imageUri != null){
             String imageName = username + "." + getExtension(imageUri);
             final StorageReference imageRef = storageReference.child(imageName);
-
             UploadTask uploadTask = imageRef.putFile(imageUri);
+
             uploadTask.continueWithTask(new Continuation<UploadTask.TaskSnapshot, Task<Uri>>() {
                 @Override
                 public Task<Uri> then(@NonNull Task<UploadTask.TaskSnapshot> task) throws Exception {
@@ -336,10 +338,9 @@ public class ModelFirebase {
                     }
                     else if (!task.isSuccessful()){
                         Toast.makeText(MyApplication.context, task.getException().toString(), Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                    }}});
         }
+
         else {
             Toast.makeText(MyApplication.context, "Please choose a profile image", Toast.LENGTH_SHORT).show();
         }
@@ -353,9 +354,11 @@ public class ModelFirebase {
         if (username != null)
             json.put("username", username);
         else json.put("username", User.getInstance().username);
+
         if (profileImgUrl != null)
             json.put("profileImageUrl", profileImgUrl);
         else json.put("profileImageUrl", User.getInstance().userprofileImageUrl);
+
         json.put("email", User.getInstance().userEmail);
 
         db.collection("userData").document(User.getInstance().userEmail).set(json).addOnCompleteListener(new OnCompleteListener<Void>()
@@ -365,8 +368,6 @@ public class ModelFirebase {
             {
                 if (listener != null)
                     listener.onComplete(task.isSuccessful());
-            }
-        });
+            }});
     }
-
 }

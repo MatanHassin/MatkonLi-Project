@@ -35,7 +35,6 @@ import static android.app.Activity.RESULT_OK;
 
 
 public class Edit_Profile_Fragment extends Fragment {
-
     View view;
     ImageView editProfileImage;
     EditText editUsername;
@@ -54,7 +53,6 @@ public class Edit_Profile_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view= inflater.inflate(R.layout.fragment_edit__profile_, container, false);
-
         editProfileImage = view.findViewById(R.id.edit_profile_edit_photo_image_view);
         editUsername = view.findViewById(R.id.edit_profile_username_edit_text);
         saveChangesBtn = view.findViewById(R.id.edit_profile_save_changes_btn);
@@ -65,6 +63,7 @@ public class Edit_Profile_Fragment extends Fragment {
                 chooseImageFromGallery();
             }
         });
+
         saveChangesBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -78,17 +77,16 @@ public class Edit_Profile_Fragment extends Fragment {
     }
 
     private void setEditProfileHints() {
-        if (User.getInstance().userprofileImageUrl != null)
-        {
-            Picasso.get().load(User.getInstance().userprofileImageUrl).noPlaceholder().into(editProfileImage);
-        }
+        if (User.getInstance().userprofileImageUrl != null) { Picasso.get().load(User.getInstance().userprofileImageUrl).noPlaceholder().into(editProfileImage); }
         editUsername.setHint(User.getInstance().username);
     }
 
     private void updateUserProfile() {
         final String username;
+
         if (editUsername.getText().toString() != null && !editUsername.getText().toString().equals(""))
             username = editUsername.getText().toString();
+
         else username = User.getInstance().username;
 
         if (profileImageUrl != null)
@@ -97,7 +95,6 @@ public class Edit_Profile_Fragment extends Fragment {
                 @Override
                 public void onSuccess(String url)
                 {
-
                     Model.instance.updateUserProfile(username, url,new Model.Listener<Boolean>()
                     {
                         @Override
@@ -107,17 +104,14 @@ public class Edit_Profile_Fragment extends Fragment {
                             NavController navCtrl = Navigation.findNavController(view);
                             navCtrl.navigateUp();
                             navCtrl.navigateUp();
-                        }
-                    });
+                        }});
                 }
 
                 @Override
-                public void onFail()
-                {
-                    Snackbar.make(view, "Failed to edit profile", Snackbar.LENGTH_LONG).show();
-                }
+                public void onFail() { Snackbar.make(view, "Failed to edit profile", Snackbar.LENGTH_LONG).show(); }
             });
         }
+
         else {
             Model.instance.updateUserProfile(username,null, new Model.Listener<Boolean>() {
                 @Override
@@ -127,8 +121,7 @@ public class Edit_Profile_Fragment extends Fragment {
                     NavController navCtrl = Navigation.findNavController(view);
                     navCtrl.navigateUp();
                     navCtrl.navigateUp();
-                }
-            });
+                }});
         }
     }
 
@@ -152,11 +145,9 @@ public class Edit_Profile_Fragment extends Fragment {
             profileImageUrl = data.getData();
             editProfileImage.setImageURI(profileImageUrl);
             postImgBitmap = uriToBitmap(profileImageUrl);
+        }
 
-        }
-        else {
-            Toast.makeText(getContext(), "No image was selected", Toast.LENGTH_SHORT).show();
-        }
+        else { Toast.makeText(getContext(), "No image was selected", Toast.LENGTH_SHORT).show(); }
     }
 
     private Bitmap uriToBitmap(Uri selectedFileUri)
@@ -167,7 +158,6 @@ public class Edit_Profile_Fragment extends Fragment {
             Bitmap image = BitmapFactory.decodeFileDescriptor(fileDescriptor);
             parcelFileDescriptor.close();
             return image;
-
         } catch (IOException e) {
             e.printStackTrace();
         }

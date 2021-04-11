@@ -56,7 +56,6 @@ public class ModelStorage {
 
     public static void deleteImage(String imageUrl, final Listener listener)
     {
-
         Date date = new Date();
         FirebaseStorage storageReference = FirebaseStorage.getInstance();
         final StorageReference imageRef = storageReference.getReferenceFromUrl(imageUrl);

@@ -12,7 +12,6 @@ import java.util.List;
 
 @Dao
 public interface RecipeDao {
-
     @Query("select * from Recipe")
     LiveData<List<Recipe>> getAllRecipes();
 

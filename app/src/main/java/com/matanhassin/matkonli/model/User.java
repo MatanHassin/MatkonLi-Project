@@ -1,7 +1,6 @@
 package com.matanhassin.matkonli.model;
 
 public class User {
-
     private static User theUser = null;
     public String username;
     public String userEmail;

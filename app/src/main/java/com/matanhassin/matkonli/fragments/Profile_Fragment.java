@@ -13,7 +13,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.matanhassin.matkonli.R;
@@ -39,7 +38,6 @@ public class Profile_Fragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         view = inflater.inflate(R.layout.fragment_profile_, container, false);
-
         userName = view.findViewById(R.id.profile_page_username_text_view);
         userEmail = view.findViewById(R.id.profile_page_email_text_view);
         userProfileImage = view.findViewById(R.id.profile_page_profile_image_view);
