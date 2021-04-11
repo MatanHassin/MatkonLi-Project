@@ -82,10 +82,15 @@ public class New_Recipe_Fragment extends Fragment {
         uploadBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (addImageUri != null && recipeTitle != null && recipeIngredients != null && recipeInstructions != null )
+                uploadBtn.setEnabled(false);
+                if (addImageUri != null && recipeTitle != null && recipeIngredients != null && recipeInstructions != null ) {
                     saveARecipe();
-                else
+                }
+                    else
+                {
                     Toast.makeText(getContext(), "Please fill all fields and add a photo", Toast.LENGTH_SHORT).show();
+                    uploadBtn.setEnabled(true);
+                }
             }
         });
         return view;

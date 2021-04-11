@@ -100,7 +100,6 @@ public class Model {
                     @Override
                     protected String doInBackground(String... strings) {
                         for (String id : data) {
-                            Log.d("TAG", "deleted id: " + id);
                             AppLocalDb.db.RecipeDao().deleteByRecipeId(id);
                         }
                         return "";
@@ -142,15 +141,4 @@ public class Model {
         ModelFirebase.setUserData(email);
     }
 
-    public LatLng getLocation() {
-        if (ActivityCompat.checkSelfPermission(MyApplication.context, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(MyApplication.context, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            return new LatLng(0, 0);
-        }
-
-
-        LocationManager locationManager = (LocationManager) MyApplication.context.getSystemService(Context.LOCATION_SERVICE);
-        String provider = locationManager.getBestProvider(new Criteria(), true);
-        Location location = locationManager.getLastKnownLocation(provider);
-        return new LatLng(location.getLatitude(), location.getLongitude());
-    }
 }

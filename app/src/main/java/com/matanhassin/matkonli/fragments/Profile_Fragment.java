@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.matanhassin.matkonli.R;
@@ -21,7 +22,7 @@ import com.matanhassin.matkonli.model.User;
 import com.squareup.picasso.Picasso;
 
 public class Profile_Fragment extends Fragment {
-
+    View view;
     TextView userName;
     TextView userEmail;
     ImageView userProfileImage;
@@ -37,7 +38,7 @@ public class Profile_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_profile_, container, false);
+        view = inflater.inflate(R.layout.fragment_profile_, container, false);
 
         userName = view.findViewById(R.id.profile_page_username_text_view);
         userEmail = view.findViewById(R.id.profile_page_email_text_view);
@@ -45,6 +46,7 @@ public class Profile_Fragment extends Fragment {
         editProfileBtn = view.findViewById(R.id.profile_page_edit_profile_btn);
         myRecipesBook = view.findViewById(R.id.profile_page_my_recipes_book_btn);
         logoutBtn = view.findViewById(R.id.profile_page_logout_btn);
+
         editProfileBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

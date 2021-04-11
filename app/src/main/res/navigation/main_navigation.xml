@@ -42,7 +42,11 @@
         android:id="@+id/edit_Recipe_Fragment"
         android:name="com.matanhassin.matkonli.fragments.Edit_Recipe_Fragment"
         android:label="Edit Recipe"
-        tools:layout="@layout/fragment_edit__recipe_" />
+        tools:layout="@layout/fragment_edit__recipe_" >
+        <argument
+            android:name="recipe"
+            app:argType="com.matanhassin.matkonli.model.Recipe" />
+    </fragment>
     <fragment
         android:id="@+id/profile_Fragment"
         android:name="com.matanhassin.matkonli.fragments.Profile_Fragment"
