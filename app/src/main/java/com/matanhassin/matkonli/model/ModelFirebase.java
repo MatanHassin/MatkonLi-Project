@@ -262,14 +262,14 @@ public class ModelFirebase {
 
     public static Map<String, Object> toMap(Recipe recipe){
         HashMap<String, Object> map = new HashMap<>();
-        map.put("recipeId", recipe.getRecipeId());
-        map.put("recipeName", recipe.getRecipeName());
-        map.put("categoryId", recipe.getCategoryId());
-        map.put("recipeIngredients", recipe.getRecipeIngredients());
-        map.put("recipeContent", recipe.getRecipeContent());
-        map.put("recipeImgUrl", recipe.getRecipeImageUrl());
-        map.put("userId", User.getInstance().getUserId());
-        map.put("username", User.getInstance().getUsername());
+        map.put("recipeId", recipe.recipeId);
+        map.put("recipeName", recipe.recipeName);
+        map.put("categoryId", recipe.categoryId);
+        map.put("recipeIngredients", recipe.recipeIngredients);
+        map.put("recipeContent", recipe.recipeContent);
+        map.put("recipeImgUrl", recipe.recipeImageUrl);
+        map.put("userId", User.getInstance().userId);
+        map.put("username", User.getInstance().username);
         map.put("lastUpdated", FieldValue.serverTimestamp());
         return map;
     }
@@ -279,8 +279,8 @@ public class ModelFirebase {
         newRecipe.recipeId = (String) json.get("recipeId");
         newRecipe.recipeName = (String) json.get("recipeName");
         newRecipe.categoryId = (String) json.get("categoryId");
-        newRecipe.recipeIngredients = (String) json.get("recIngredients");
-        newRecipe.recipeContent = (String) json.get("recContent");
+        newRecipe.recipeIngredients = (String) json.get("recipeIngredients");
+        newRecipe.recipeContent = (String) json.get("recipeContent");
         newRecipe.recipeImageUrl = (String) json.get("recipeImgUrl");
         newRecipe.userId = (String) json.get("userId");
         newRecipe.username = (String) json.get("username");

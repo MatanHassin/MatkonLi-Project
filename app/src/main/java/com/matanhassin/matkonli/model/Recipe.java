@@ -4,8 +4,11 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.io.Serializable;
+
 @Entity
-public class Recipe {
+public class Recipe implements Serializable {
+
     @PrimaryKey
     @NonNull
     public String recipeId;
@@ -29,6 +32,18 @@ public class Recipe {
         username = "";
         lastUpdated = 0;
     }
+
+    public Recipe(String recipeId, String recipeName, String categoryId, String recipeIngredients, String recipeContent, String recipeImageUrl, String userId, String username) {
+        this.recipeId = recipeId;
+        this.recipeName = recipeName;
+        this.categoryId = categoryId;
+        this.recipeIngredients = recipeIngredients;
+        this.recipeContent = recipeContent;
+        this.recipeImageUrl = recipeImageUrl;
+        this.userId = userId;
+        this.username = username;
+    }
+
     @NonNull
     public String getRecipeId() {
         return recipeId;
@@ -86,9 +101,7 @@ public class Recipe {
         this.userId = userId;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username; }
 
     public void setUsername(String username) {
         this.username = username;
