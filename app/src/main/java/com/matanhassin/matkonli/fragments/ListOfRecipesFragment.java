@@ -52,7 +52,7 @@ public class ListOfRecipesFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_list_of_recipes, container, false);
         category = ListOfRecipesFragmentArgs.fromBundle(getArguments()).getCategory();
 
-        list=view.findViewById(R.id.list_of_recipes_recycler_view);
+        list=view.findViewById(R.id.list_of_my_recipes_recycler_view);
         list.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         list.setLayoutManager(layoutManager);
@@ -78,7 +78,7 @@ public class ListOfRecipesFragment extends Fragment {
             }
         });
 
-        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.list_swipe_refresh);
+        final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.my_list_swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
