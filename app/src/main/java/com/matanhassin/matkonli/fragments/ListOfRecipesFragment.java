@@ -50,22 +50,23 @@ public class ListOfRecipesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_of_recipes, container, false);
-        category = ListOfRecipesFragmentArgs.fromBundle(getArguments()).getCategory();
 
+        category = ListOfRecipesFragmentArgs.fromBundle(getArguments()).getCategory();
         list=view.findViewById(R.id.list_of_my_recipes_recycler_view);
         list.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         list.setLayoutManager(layoutManager);
         adapter = new RecipeListAdapter();
         list.setAdapter(adapter);
+
         adapter.setOnClickListener(new OnItemClickListener() {
+
             @Override
             public void onClick(int position) {
                 Recipe recipe = data.get(position);
                 ListOfRecipesFragmentDirections.ActionListOfRecipesFragmentToRecipePageFrag action = ListOfRecipesFragmentDirections.actionListOfRecipesFragmentToRecipePageFrag(recipe);
                 Navigation.findNavController(view).navigate(action);
-            }
-        });
+            }});
 
         liveData = viewModel.getDataByCategory(category);
         liveData.observe(getViewLifecycleOwner(), new Observer<List<Recipe>>() {
@@ -75,8 +76,7 @@ public class ListOfRecipesFragment extends Fragment {
                 List<Recipe> reversedData = reverseData(recipes);
                 data = reversedData;
                 adapter.notifyDataSetChanged();
-            }
-        });
+            }});
 
         final SwipeRefreshLayout swipeRefreshLayout = view.findViewById(R.id.my_list_swipe_refresh);
         swipeRefreshLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
@@ -88,8 +88,7 @@ public class ListOfRecipesFragment extends Fragment {
                         swipeRefreshLayout.setRefreshing(false);
                     }
                 });
-            }
-        });
+            }});
 
         return view;
     }
@@ -129,24 +128,24 @@ public class ListOfRecipesFragment extends Fragment {
                         int position = getAdapterPosition();
                         if (position != RecyclerView.NO_POSITION)
                             listener.onClick(position);
-                    }
-                }
-            });
+                    }}});
         }
         public void bind(Recipe recipeToBind){
             recipeTitle.setText(recipeToBind.recipeName);
             recipeUsername.setText(recipeToBind.username);
             recipeCategory.setText(recipeToBind.categoryId);
             recipe = recipeToBind;
+
             if (recipeToBind.recipeImageUrl !=null)
             {
-                Picasso.get().load(recipeToBind.recipeImageUrl).placeholder(R.drawable.bread).into(recipeImage);
-            }else {
+                Picasso.get().load(recipeToBind.recipeImageUrl).placeholder(R.drawable.matkonlilogo).into(recipeImage);
+            }
+            else {
                 recipeImage.setImageResource(R.drawable.ic_launcher_background);
             }
-
         }
     }
+
     interface OnItemClickListener {
         void onClick(int position);
     }

@@ -66,7 +66,7 @@ public class Recipe_Page_Fragment extends Fragment {
             instructionList.setText(recipe.recipeContent);
             if (recipe.recipeImageUrl != null)
             {
-                Picasso.get().load(recipe.recipeImageUrl).placeholder(R.drawable.bread).into(recipeImage);
+                Picasso.get().load(recipe.recipeImageUrl).placeholder(R.drawable.matkonlilogo).into(recipeImage);
             }else {
                 recipeImage.setImageResource(R.drawable.ic_launcher_background);
             }
