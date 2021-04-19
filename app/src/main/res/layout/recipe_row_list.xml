@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:background="#FFE4AE">
+    android:background="@drawable/dotted_border">
 
     <ImageView
         android:id="@+id/recipe_row_image_view"
