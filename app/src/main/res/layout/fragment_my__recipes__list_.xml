@@ -3,12 +3,13 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFE4AE"
     tools:context=".fragments.My_Recipes_List_Fragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         android:id="@+id/my_list_swipe_refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="650dp">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_of_my_recipes_recycler_view"

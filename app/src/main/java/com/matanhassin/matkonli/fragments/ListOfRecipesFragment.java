@@ -30,6 +30,7 @@ import java.util.List;
 
 public class ListOfRecipesFragment extends Fragment {
 
+    TextView categoryTextView;
     String category;
     RecyclerView list;
     List<Recipe> data = new LinkedList<>();
@@ -50,22 +51,31 @@ public class ListOfRecipesFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_list_of_recipes, container, false);
-
         category = ListOfRecipesFragmentArgs.fromBundle(getArguments()).getCategory();
+        String s1=category.substring(0,1).toUpperCase()+category.substring(1);
         list=view.findViewById(R.id.list_of_my_recipes_recycler_view);
         list.setHasFixedSize(true);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getContext());
         list.setLayoutManager(layoutManager);
         adapter = new RecipeListAdapter();
         list.setAdapter(adapter);
-
+        categoryTextView=view.findViewById(R.id.list_of_recipes_category_textview);
+        categoryTextView.setText(s1);
         adapter.setOnClickListener(new OnItemClickListener() {
 
             @Override
             public void onClick(int position) {
                 Recipe recipe = data.get(position);
-                ListOfRecipesFragmentDirections.ActionListOfRecipesFragmentToRecipePageFrag action = ListOfRecipesFragmentDirections.actionListOfRecipesFragmentToRecipePageFrag(recipe);
-                Navigation.findNavController(view).navigate(action);
+
+
+                    ListOfRecipesFragmentDirections.ActionListOfRecipesFragmentToRecipePageFrag action = ListOfRecipesFragmentDirections.actionListOfRecipesFragmentToRecipePageFrag(recipe);
+                    Navigation.findNavController(view).navigate(action);
+
+                    //HomeFragmentDirections.ActionHomeFragmentToListOfRecipesFragment action = HomeFragmentDirections.actionHomeFragmentToListOfRecipesFragment("fish");
+                    //Navigation.findNavController(view).navigate(action);
+
+
+
             }});
 
         liveData = viewModel.getDataByCategory(category);
@@ -110,15 +120,13 @@ public class ListOfRecipesFragment extends Fragment {
         ImageView recipeImage;
         TextView recipeTitle;
         TextView recipeUsername;
-        TextView recipeCategory;
         Recipe recipe;
 
         public RecipeViewHolder(@NonNull View itemView, OnItemClickListener listener) {
             super(itemView);
             recipeImage = itemView.findViewById(R.id.recipe_row_image_view);
             recipeTitle = itemView.findViewById(R.id.recipe_row_recipe_title_text_view);
-            recipeUsername = itemView.findViewById(R.id.recipe_row_category_text_view);
-            recipeCategory = itemView.findViewById(R.id.recipe_row_username_textview);
+            recipeUsername = itemView.findViewById(R.id.recipe_row_username_textview);
 
 
             itemView.setOnClickListener(new View.OnClickListener() {
@@ -133,7 +141,6 @@ public class ListOfRecipesFragment extends Fragment {
         public void bind(Recipe recipeToBind){
             recipeTitle.setText(recipeToBind.recipeName);
             recipeUsername.setText(recipeToBind.username);
-            recipeCategory.setText(recipeToBind.categoryId);
             recipe = recipeToBind;
 
             if (recipeToBind.recipeImageUrl !=null)

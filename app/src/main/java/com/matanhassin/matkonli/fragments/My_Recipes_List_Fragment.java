@@ -120,7 +120,6 @@ public class My_Recipes_List_Fragment extends Fragment {
         TextView recipeTitle;
         ImageView recipeImage;
         TextView username;
-        TextView category;
         Recipe recipe;
 
         public MyRecipeViewHolder(@NonNull View itemView, final My_Recipes_List_Fragment.OnItemClickListener listener) {
@@ -129,7 +128,6 @@ public class My_Recipes_List_Fragment extends Fragment {
             recipeTitle = itemView.findViewById(R.id.recipe_row_recipe_title_text_view);
             recipeImage = itemView.findViewById(R.id.recipe_row_image_view);
             username = itemView.findViewById(R.id.recipe_row_username_textview);
-            category = itemView.findViewById(R.id.recipe_row_category_text_view);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
@@ -146,7 +144,6 @@ public class My_Recipes_List_Fragment extends Fragment {
         public void bind(Recipe recipeToBind){
             recipeTitle.setText(recipeToBind.recipeName);
             username.setText(recipeToBind.username);
-            category.setText(recipeToBind.categoryId);
             recipe = recipeToBind;
             if (recipeToBind.recipeImageUrl !=null)
             {

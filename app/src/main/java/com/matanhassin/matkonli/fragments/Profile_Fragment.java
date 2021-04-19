@@ -30,7 +30,7 @@ public class Profile_Fragment extends Fragment {
     Button logoutBtn;
 
     public Profile_Fragment() {
-        // Required empty public constructor
+        // Required empty public constructor}
     }
 
     @Override
