@@ -114,7 +114,7 @@ public class New_Recipe_Fragment extends Fragment {
 
             @Override
             public void onFail() {
-                Snackbar.make(view, "Failed to create post recipe and save it in databases", Snackbar.LENGTH_LONG).show();
+                Snackbar.make(view, "Failed to create post recipe and save it", Snackbar.LENGTH_LONG).show();
             }
         });
     }
@@ -140,7 +140,7 @@ public class New_Recipe_Fragment extends Fragment {
 
             startActivityForResult(openGalleryIntent, REQUEST_CODE);
         } catch (Exception e) {
-            Toast.makeText(getActivity(), "*Error* New post recipe Page: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "*Error* Choose image from gallery: " + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
