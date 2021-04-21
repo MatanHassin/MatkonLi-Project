@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE4AE"
-    tools:context=".fragments.Profile_Fragment" >
+    android:background="#E7E7E7"
+    tools:context=".fragments.Profile_Fragment">
 
     <TextView
         android:id="@+id/profile_page_username_text_view"

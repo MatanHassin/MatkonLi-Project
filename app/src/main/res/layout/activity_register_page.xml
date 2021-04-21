@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE4AE"
+    android:background="#E7E7E7"
     tools:context=".activities.register_page">
 
     <Button
@@ -75,7 +75,7 @@
         android:layout_marginStart="24dp"
         android:layout_marginTop="36dp"
         android:layout_marginEnd="24dp"
-        android:background="#FFE4AE"
+        android:background="#E7E7E7"
         android:src="@drawable/ic_baseline_add_a_photo_24"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

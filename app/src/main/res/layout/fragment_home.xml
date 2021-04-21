@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE4AE"
+    android:background="#E7E7E7"
     tools:context=".fragments.HomeFragment">
 
     <!-- TODO: Update blank fragment layout -->
@@ -33,7 +33,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/matkonlilogo">
+        app:layout_constraintTop_toBottomOf="@+id/home_fragment_choose_textview">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -46,7 +46,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/spaguetti" />
 
             <ImageButton
@@ -54,7 +54,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/steak" />
 
             <ImageButton
@@ -62,7 +62,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/fish" />
         </LinearLayout>
 
@@ -77,7 +77,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/cupcake" />
 
             <ImageButton
@@ -85,7 +85,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/bread" />
 
             <ImageButton
@@ -93,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/pizza" />
         </LinearLayout>
 
@@ -108,7 +108,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/salad" />
 
             <ImageButton
@@ -116,7 +116,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/cheese" />
 
             <ImageButton
@@ -124,9 +124,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:background="#FFE4AE"
+                android:background="#F3F3F3"
                 android:src="@drawable/pint" />
         </LinearLayout>
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/home_fragment_choose_textview"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="24dp"
+        android:fontFamily="serif"
+        android:text="Choose a category"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/matkonlilogo" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

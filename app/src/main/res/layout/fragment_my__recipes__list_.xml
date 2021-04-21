@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE4AE"
+    android:background="#E7E7E7"
     tools:context=".fragments.My_Recipes_List_Fragment">
 
     <androidx.swiperefreshlayout.widget.SwipeRefreshLayout

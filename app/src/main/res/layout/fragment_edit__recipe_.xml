@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFE4AE"
-    tools:context=".fragments.Edit_Recipe_Fragment" >
+    android:background="#E7E7E7"
+    tools:context=".fragments.Edit_Recipe_Fragment">
 
     <TextView
         android:id="@+id/Edit_Recipe_Title_textview"

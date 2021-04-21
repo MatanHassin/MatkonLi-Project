@@ -21,27 +21,28 @@
             android:text="Category"
             android:textSize="30sp" />
     </LinearLayout>
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="#FFE4AE"
-    android:layout_weight="1"
-    tools:context=".fragments.ListOfRecipesFragment">
 
-    <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
-        android:id="@+id/my_list_swipe_refresh"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginBottom="55dp">
+        android:layout_weight="1"
+        android:background="#E7E7E7"
+        tools:context=".fragments.ListOfRecipesFragment">
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/list_of_my_recipes_recycler_view"
+        <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+            android:id="@+id/my_list_swipe_refresh"
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:layout_marginBottom="55dp">
 
-        </androidx.recyclerview.widget.RecyclerView>
-    </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/list_of_my_recipes_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
 
-</LinearLayout>
+            </androidx.recyclerview.widget.RecyclerView>
+        </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+
+    </LinearLayout>
 
 </LinearLayout>
